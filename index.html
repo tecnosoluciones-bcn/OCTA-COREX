@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#ff8a16" />
+  <meta name="theme-color" content="#ff6a00" />
   <meta name="description" content="OctaCoreX — creador de contenido. TikTok, Instagram, Discord y YouTube en un solo lugar." />
   <meta property="og:title" content="OctaCoreX | Creador de contenido" />
   <meta property="og:description" content="Conecta conmigo en TikTok, Instagram, Discord y YouTube." />
@@ -13,14 +13,19 @@
 
   <style>
     :root {
-      --orange-1: #ffb339;
-      --orange-2: #ff8a16;
-      --orange-3: #f36b0f;
-      --ink: #1d130d;
-      --muted: #756c66;
-      --white: #fffdf9;
-      --shadow: 0 18px 45px rgba(104, 48, 0, .18);
-      --radius: 32px;
+      --bg-1: #120707;
+      --bg-2: #1a0a08;
+      --bg-3: #2c0d08;
+      --neon-1: #ff6a00;
+      --neon-2: #ff7f11;
+      --neon-3: #ff9500;
+      --neon-soft: rgba(255, 120, 0, .22);
+      --ink: #fff7ef;
+      --muted: #ffd8bf;
+      --card: rgba(22, 13, 12, .80);
+      --card-border: rgba(255, 144, 32, .28);
+      --shadow: 0 20px 40px rgba(0, 0, 0, .38);
+      --radius: 30px;
     }
 
     * { box-sizing: border-box; }
@@ -32,37 +37,38 @@
       color: var(--ink);
       font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background:
-        radial-gradient(circle at 15% 12%, rgba(255,255,255,.26), transparent 26%),
-        radial-gradient(circle at 85% 18%, rgba(255,224,136,.22), transparent 25%),
-        linear-gradient(160deg, var(--orange-1) 0%, var(--orange-2) 48%, var(--orange-3) 100%);
+        radial-gradient(circle at 20% 0%, rgba(255,106,0,.18), transparent 26%),
+        radial-gradient(circle at 100% 20%, rgba(255,149,0,.14), transparent 28%),
+        linear-gradient(180deg, var(--bg-1) 0%, var(--bg-2) 35%, var(--bg-3) 100%);
       overflow-x: hidden;
-    }
-
-    body::before,
-    body::after {
-      content: "";
-      position: fixed;
-      border-radius: 999px;
-      pointer-events: none;
-      filter: blur(2px);
-      opacity: .24;
-      z-index: 0;
+      position: relative;
     }
 
     body::before {
-      width: 360px;
-      height: 360px;
-      top: -170px;
-      left: -170px;
-      background: #fff0a9;
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(rgba(255,130,24,.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,130,24,.07) 1px, transparent 1px);
+      background-size: 26px 26px;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,.55), rgba(0,0,0,.12));
+      z-index: 0;
     }
 
     body::after {
-      width: 420px;
-      height: 420px;
-      right: -240px;
-      bottom: -180px;
-      background: #ffe36f;
+      content: "";
+      position: fixed;
+      width: 360px;
+      height: 360px;
+      right: -140px;
+      top: -120px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,115,0,.35), transparent 65%);
+      filter: blur(12px);
+      pointer-events: none;
+      z-index: 0;
     }
 
     .page {
@@ -70,25 +76,25 @@
       z-index: 1;
       width: min(100%, 520px);
       margin: 0 auto;
-      padding: max(28px, env(safe-area-inset-top)) 18px max(30px, env(safe-area-inset-bottom));
+      padding: max(26px, env(safe-area-inset-top)) 18px max(28px, env(safe-area-inset-bottom));
     }
 
     .watermark {
       position: absolute;
-      top: 24px;
+      top: 18px;
       left: 50%;
       width: 390px;
       max-width: 92vw;
       transform: translateX(-50%) scale(1.15);
-      opacity: .045;
-      filter: grayscale(1) brightness(10);
+      opacity: .06;
+      filter: brightness(10) saturate(1.4);
       pointer-events: none;
       user-select: none;
     }
 
     .hero {
       text-align: center;
-      padding: 8px 10px 24px;
+      padding: 6px 10px 24px;
       animation: rise .65s ease both;
     }
 
@@ -104,13 +110,13 @@
     .logo-wrap::after {
       content: "";
       position: absolute;
-      width: 150px;
-      height: 22px;
+      width: 160px;
+      height: 28px;
       bottom: 8px;
       left: 50%;
       transform: translateX(-50%);
-      background: rgba(145, 64, 0, .20);
-      filter: blur(10px);
+      background: rgba(255, 106, 0, .42);
+      filter: blur(12px);
       border-radius: 50%;
       z-index: -1;
     }
@@ -119,33 +125,36 @@
       width: 100%;
       max-height: 100%;
       object-fit: contain;
-      filter: drop-shadow(0 12px 18px rgba(80, 38, 0, .14));
+      filter: drop-shadow(0 0 24px rgba(255,120,0,.20)) drop-shadow(0 14px 20px rgba(0,0,0,.25));
     }
 
     h1 {
-      margin: 6px 0 8px;
-      font-size: clamp(2.6rem, 11vw, 4.2rem);
+      margin: 8px 0 8px;
+      font-size: clamp(2.8rem, 11vw, 4.25rem);
       line-height: .95;
       letter-spacing: -2.5px;
-      color: #fff;
+      color: #fff9f3;
       text-shadow:
-        0 4px 0 #4d210f,
-        0 8px 22px rgba(94, 38, 0, .22);
+        0 0 10px rgba(255,134,29,.35),
+        0 0 24px rgba(255,106,0,.42),
+        0 4px 0 rgba(50, 14, 0, .95);
     }
 
     .role {
       display: inline-flex;
       align-items: center;
       gap: 9px;
-      padding: 9px 16px;
+      padding: 10px 16px;
       border-radius: 999px;
-      background: rgba(163, 63, 0, .62);
-      color: #fff8ed;
+      background: linear-gradient(90deg, rgba(255,106,0,.84), rgba(255,149,0,.78));
+      color: #fffaf4;
       font-size: .94rem;
-      font-weight: 700;
-      letter-spacing: .05em;
-      box-shadow: inset 0 1px rgba(255,255,255,.18);
-      backdrop-filter: blur(7px);
+      font-weight: 800;
+      letter-spacing: .08em;
+      border: 1px solid rgba(255, 224, 185, .18);
+      box-shadow: 0 0 0 1px rgba(255,255,255,.05) inset, 0 10px 28px rgba(255,106,0,.22);
+      backdrop-filter: blur(8px);
+      text-transform: uppercase;
     }
 
     .role::before,
@@ -154,17 +163,18 @@
       width: 18px;
       height: 2px;
       border-radius: 999px;
-      background: #ffe8ac;
+      background: #fff0d4;
     }
 
     .intro {
       margin: 18px auto 0;
       max-width: 390px;
-      color: #fff9ee;
-      font-size: 1.05rem;
+      color: #fff7ef;
+      font-size: 1.03rem;
       line-height: 1.45;
-      font-weight: 600;
-      text-shadow: 0 2px 12px rgba(99,41,0,.14);
+      font-weight: 700;
+      letter-spacing: .02em;
+      text-shadow: 0 0 14px rgba(255,106,0,.16);
     }
 
     .links {
@@ -183,14 +193,14 @@
       padding: 16px 17px;
       color: var(--ink);
       text-decoration: none;
-      background: rgba(255,255,255,.94);
-      border: 1px solid rgba(255,255,255,.72);
+      background: linear-gradient(180deg, rgba(28,18,17,.92), rgba(19,12,12,.88));
+      border: 1px solid var(--card-border);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
       overflow: hidden;
       -webkit-tap-highlight-color: transparent;
-      backdrop-filter: blur(12px);
-      transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+      backdrop-filter: blur(14px);
+      transition: transform .18s ease, box-shadow .18s ease, background .18s ease, border-color .18s ease;
       animation: rise .6s ease both;
     }
 
@@ -204,14 +214,23 @@
       inset: 0 auto 0 0;
       width: 5px;
       background: var(--accent);
-      opacity: .96;
+      box-shadow: 0 0 18px var(--accent);
+      opacity: .98;
+    }
+
+    .link-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(255,255,255,.05), transparent 35%);
+      pointer-events: none;
     }
 
     .link-card:hover,
     .link-card:focus-visible {
-      transform: translateY(-3px) scale(1.008);
-      box-shadow: 0 22px 55px rgba(104, 48, 0, .23);
-      background: #fff;
+      transform: translateY(-4px) scale(1.008);
+      box-shadow: 0 24px 56px rgba(0, 0, 0, .46), 0 0 24px rgba(255, 120, 0, .10);
+      border-color: rgba(255,160,53,.42);
       outline: none;
     }
 
@@ -224,7 +243,7 @@
       place-items: center;
       border-radius: 23px;
       background: var(--accent);
-      box-shadow: inset 0 1px rgba(255,255,255,.18), 0 10px 20px rgba(0,0,0,.11);
+      box-shadow: inset 0 1px rgba(255,255,255,.18), 0 10px 24px rgba(0,0,0,.18);
     }
 
     .icon img {
@@ -241,11 +260,12 @@
 
     .platform {
       display: block;
-      font-size: 1.35rem;
+      font-size: 1.34rem;
       line-height: 1.1;
       font-weight: 900;
       letter-spacing: -.035em;
       margin-bottom: 5px;
+      color: #fff9f4;
     }
 
     .handle {
@@ -253,6 +273,7 @@
       font-size: .98rem;
       line-height: 1.25;
       font-weight: 800;
+      color: #fff1df;
       overflow-wrap: anywhere;
     }
 
@@ -271,15 +292,19 @@
       place-items: center;
       justify-self: end;
       border-radius: 50%;
-      color: var(--accent);
-      background: color-mix(in srgb, var(--accent) 10%, white);
+      color: #fff;
+      background: color-mix(in srgb, var(--accent) 74%, white);
       font-size: 1.65rem;
       font-weight: 500;
-      transition: transform .18s ease;
+      box-shadow: 0 0 18px color-mix(in srgb, var(--accent) 28%, transparent);
+      transition: transform .18s ease, box-shadow .18s ease;
     }
 
     .link-card:hover .arrow,
-    .link-card:focus-visible .arrow { transform: translateX(3px); }
+    .link-card:focus-visible .arrow {
+      transform: translateX(3px);
+      box-shadow: 0 0 18px color-mix(in srgb, var(--accent) 36%, transparent);
+    }
 
     .tiktok { --accent: #101010; }
     .instagram { --accent: #d62b83; }
@@ -287,21 +312,14 @@
     .youtube { --accent: #ff0033; }
 
     footer {
-      padding: 25px 12px 4px;
-      color: rgba(255,255,255,.95);
+      padding: 26px 12px 6px;
+      color: #fff4e6;
       text-align: center;
-      font-size: .88rem;
-      font-weight: 700;
-      letter-spacing: .12em;
-      text-shadow: 0 2px 8px rgba(110,47,0,.18);
-    }
-
-    .heart {
-      display: block;
-      margin-top: 8px;
-      font-size: 1.15rem;
-      color: #ffe894;
-      letter-spacing: normal;
+      font-size: 1rem;
+      font-weight: 900;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      text-shadow: 0 0 14px rgba(255,106,0,.38);
     }
 
     @keyframes rise {
@@ -325,6 +343,7 @@
       .handle { font-size: .91rem; }
       .description { font-size: .8rem; }
       .arrow { width: 36px; height: 36px; font-size: 1.4rem; }
+      footer { font-size: .92rem; letter-spacing: .14em; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -348,7 +367,7 @@
 
       <h1 id="creator-name">OctaCoreX</h1>
       <div class="role">Creador de contenido</div>
-      <p class="intro">Conecta conmigo en mis plataformas <span aria-hidden="true">♥</span></p>
+      <p class="intro">Conecta conmigo en mis plataformas</p>
     </section>
 
     <nav class="links" aria-label="Redes sociales de OctaCoreX">
@@ -413,10 +432,7 @@
       </a>
     </nav>
 
-    <footer>
-      — MÁS QUE CONTENIDO, UNA COMUNIDAD —
-      <span class="heart" aria-hidden="true">♥</span>
-    </footer>
+    <footer>NPI BRO</footer>
   </main>
 </body>
 </html>
