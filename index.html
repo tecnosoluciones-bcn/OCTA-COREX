@@ -312,14 +312,37 @@
     .youtube { --accent: #ff0033; }
 
     footer {
-      padding: 26px 12px 6px;
-      color: #fff4e6;
+      padding: 26px 12px 8px;
       text-align: center;
+    }
+
+    .footer-main {
+      color: #fff4e6;
       font-size: 1rem;
       font-weight: 900;
       letter-spacing: .18em;
       text-transform: uppercase;
       text-shadow: 0 0 14px rgba(255,106,0,.38);
+    }
+
+    .footer-credit {
+      margin-top: 10px;
+      font-size: .76rem;
+      line-height: 1.45;
+      color: rgba(255, 232, 210, .86);
+      font-weight: 600;
+      letter-spacing: .04em;
+    }
+
+    .footer-credit a {
+      color: #ffb56c;
+      text-decoration: none;
+    }
+
+    .footer-credit a:hover,
+    .footer-credit a:focus-visible {
+      text-decoration: underline;
+      outline: none;
     }
 
     @keyframes rise {
@@ -343,7 +366,8 @@
       .handle { font-size: .91rem; }
       .description { font-size: .8rem; }
       .arrow { width: 36px; height: 36px; font-size: 1.4rem; }
-      footer { font-size: .92rem; letter-spacing: .14em; }
+      .footer-main { font-size: .92rem; letter-spacing: .14em; }
+      .footer-credit { font-size: .72rem; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -432,7 +456,13 @@
       </a>
     </nav>
 
-    <footer>NPI BRO</footer>
+    <footer>
+      <div class="footer-main">NPI BRO</div>
+      <div class="footer-credit">
+        Creado por TecnoSoluciones<br>
+        <a href="https://tecnosoluciones.info" target="_blank" rel="noopener noreferrer">tecnosoluciones.info</a>
+      </div>
+    </footer>
   </main>
 </body>
 </html>
